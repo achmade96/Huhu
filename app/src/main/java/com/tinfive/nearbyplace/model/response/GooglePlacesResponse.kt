@@ -7,4 +7,6 @@ data class GooglePlacesResponse(
     @Expose
     @SerializedName("results")
     var googlePlaceResult: List<GooglePlaceResult>
+
+
 )

@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
         context = this
         initializeComponent()
         observeViewModel()
-        mService=MasjidApi
+        mService=MasjidApi()//BINGUNG DISINI<<<------------
     }
 
     private fun initializeComponent() {
@@ -133,7 +133,7 @@ class MainActivity : AppCompatActivity() {
 
                 val latLng = LatLng(latitude, longitude)
 
-                //BINGUNG DISINI
+                //BINGUNG DISINI<<<------------
                 mService.getNearbyPlaces("$mLastLocation", "500", "mosque", "AIzaSyBHkbWKsDCZtTUPn-qW-Lzjzmkbj7_1LmY")
 
                 (object : Callback<GooglePlacesResponse> {
