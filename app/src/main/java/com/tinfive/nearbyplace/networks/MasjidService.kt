@@ -2,6 +2,7 @@ package com.tinfive.nearbyplace.networks
 
 import com.tinfive.nearbyplace.model.DataMasjid
 import com.tinfive.nearbyplace.model.response.GooglePlaceResult
+import com.tinfive.nearbyplace.networks.EndPoint.BASE_URL_MAPS
 import com.tinfive.nearbyplace.networks.EndPoint.BASE_URL_MASJID
 import io.reactivex.Observable
 import io.reactivex.Single
@@ -18,7 +19,7 @@ class MasjidService {
         .create(MasjidApi::class.java)
 
     private val googleApiService: MasjidApi = Retrofit.Builder()
-        .baseUrl(EndPoint.BASE_URL_MAPS)
+        .baseUrl(BASE_URL_MAPS)
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build()

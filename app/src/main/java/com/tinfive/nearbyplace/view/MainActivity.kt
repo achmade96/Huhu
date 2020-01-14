@@ -29,11 +29,9 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.tinfive.nearbyplace.R
 import com.tinfive.nearbyplace.model.DataMasjid
 import com.tinfive.nearbyplace.model.response.GooglePlacesResponse
-import com.tinfive.nearbyplace.networks.EndPoint
-import com.tinfive.nearbyplace.networks.MasjidApi
+import com.tinfive.nearbyplace.networks.MasjidService
 import com.tinfive.nearbyplace.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.mapfragment.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -59,12 +57,11 @@ class MainActivity : AppCompatActivity() {
         private const val MY_PERMISSION_CODE: Int = 1000
     }
 
-    lateinit var mService: MasjidApi
+    private var mService = MasjidService()
     internal lateinit var currentPlaces: GooglePlacesResponse
     lateinit var context: Context
 
     lateinit var viewModel: ListViewModel
-    private val mapAdapter = ListMapsAdapter(ArrayList())
     private val masjidAdapter = ListMasjidAdapter(ArrayList())
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,7 +70,6 @@ class MainActivity : AppCompatActivity() {
         context = this
         initializeComponent()
         observeViewModel()
-        mService=MasjidApi()//BINGUNG DISINI<<<------------
     }
 
     private fun initializeComponent() {
@@ -134,7 +130,8 @@ class MainActivity : AppCompatActivity() {
                 val latLng = LatLng(latitude, longitude)
 
                 //BINGUNG DISINI<<<-------------
-                mService.getNearbyPlaces("$mLastLocation", "500", "mosque", "AIzaSyBHkbWKsDCZtTUPn-qW-Lzjzmkbj7_1LmY")
+                mService.getMosque("$mLastLocation")
+//                mService.getNearbyPlaces("$mLastLocation", "500", "mosque", "AIzaSyBHkbWKsDCZtTUPn-qW-Lzjzmkbj7_1LmY")
 
                 (object : Callback<GooglePlacesResponse> {
                     override fun onFailure(call: Call<GooglePlacesResponse>, t: Throwable?) {
@@ -143,7 +140,10 @@ class MainActivity : AppCompatActivity() {
 
                     val geoCoder = Geocoder(this@MainActivity, Locale.getDefault())
 
-                    override fun onResponse(call: Call<GooglePlacesResponse>, response: Response<GooglePlacesResponse>) {
+                    override fun onResponse(
+                        call: Call<GooglePlacesResponse>,
+                        response: Response<GooglePlacesResponse>
+                    ) {
                         currentPlaces = response.body()!!
                         if (response.isSuccessful) for (i in 0 until response.body()!!.googlePlaceResult.size) {
                             val markerOptions = MarkerOptions()
