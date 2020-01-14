@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Nearby Place</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_view_directions">Map</string>
+    <string name="error_message">An error occurred while loading data.</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBHkbWKsDCZtTUPn-qW-Lzjzmkbj7_1LmY</string>
+    <string name="browser_key">AIzaSyBHkbWKsDCZtTUPn-qW-Lzjzmkbj7_1LmY</string>
+
+</resources>
