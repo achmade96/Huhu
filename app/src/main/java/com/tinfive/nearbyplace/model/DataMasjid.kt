@@ -2,15 +2,15 @@ package com.tinfive.nearbyplace.model
 
 import com.google.gson.annotations.SerializedName
 
-data class DataMasjid (
+data class  DataMasjid (
 
-    @SerializedName("id") val id : Int,
-    @SerializedName("kabkota") val kabkota : String,
-    @SerializedName("kecamatan") val kecamatan : String,
-    @SerializedName("nama_masjid") val nama_masjid : String,
-    @SerializedName("tipologi") val tipologi : String,
-    @SerializedName("alamat") val alamat : String,
-    @SerializedName("lat") val lat : Double,
-    @SerializedName("long") val long : Double,
-    @SerializedName("foto") val foto : String
+    @SerializedName("id") var id : Int,
+    @SerializedName("kabkota") var kabkota : String,
+    @SerializedName("kecamatan") var kecamatan : String,
+    @SerializedName("nama_masjid") var nama_masjid : String,
+    @SerializedName("tipologi") var tipologi : String,
+    @SerializedName("alamat") var alamat : String,
+    @SerializedName("lat") var lat : Double,
+    @SerializedName("long") var long : Double,
+    @SerializedName("foto") var foto : String
 )

@@ -43,11 +43,11 @@ class ListMapsAdapter(private val mapView: MutableList<GooglePlaceResult>) : Rec
 
         }
 
-        fun onBind(position: Int){
+        fun onBind(position: Int) {
 
-            val (geometry,name) = mapView[position]
+            val (geometry, name) = mapView[position]
 
-            geometry?.let { name?.let { it1 -> inflateData(it, it1) } }
+            inflateData(geometry, name)
 
         }
 

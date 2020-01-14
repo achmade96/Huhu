@@ -131,9 +131,10 @@ class MainActivity : AppCompatActivity() {
 
                 //BINGUNG DISINI<<<-------------
                 mService.getMosque("$mLastLocation")
+
 //                mService.getNearbyPlaces("$mLastLocation", "500", "mosque", "AIzaSyBHkbWKsDCZtTUPn-qW-Lzjzmkbj7_1LmY")
 
-                (object : Callback<GooglePlacesResponse> {
+                    (object : Callback<GooglePlacesResponse> {
                     override fun onFailure(call: Call<GooglePlacesResponse>, t: Throwable?) {
                         Toast.makeText(baseContext, "" + t!!.message, Toast.LENGTH_SHORT).show()
                     }
@@ -161,6 +162,8 @@ class MainActivity : AppCompatActivity() {
 
                             mMap.addMarker(markerOptions)
                             viewModel.loadMosque(mLastLocation)
+
+
                         }
                         try {
                             val listAddress: List<Address> =
