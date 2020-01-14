@@ -152,8 +152,8 @@ class MainActivity : AppCompatActivity() {
                                 .title("AHA")
                                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
                             val googlePlaces = response.body()!!.googlePlaceResult[i]
-                            val lat = googlePlaces.geometry!!.locationA.lat
-                            val lng = googlePlaces.geometry!!.locationA.lng
+                            val lat = googlePlaces.geometry.locationA.lat
+                            val lng = googlePlaces.geometry.locationA.lng
                             val placeName = googlePlaces.name
                             val latLng = LatLng(lat, lng)
 
